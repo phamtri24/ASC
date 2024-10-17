@@ -52,7 +52,7 @@ class B1screen extends StatelessWidget {
                     children: [
                       iTem('LÝ THUYẾT', 'assets/images/book.png', context, LyThuyet()),
                       iTem('MẸO', 'assets/images/idea.png', context, meo()),
-                      iTem('CÂU LIỆT', 'assets/images/erro.png', context, cauLiet()),
+                      iTem('CÂU LIỆT', 'assets/images/erro.png', context, CauLiet()),
                       iTem('SA HÌNH', 'assets/images/shapes.png', context, saHinh()),
                     ],
                   )

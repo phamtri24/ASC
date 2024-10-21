@@ -40,7 +40,7 @@ class B1screen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      iTem('THI THỬ', 'assets/images/exam.png', context, thiThu()),
+                      iTem('THI THỬ', 'assets/images/exam.png', context, thiThuB1()),
                       iTem('THI THEO ĐỀ', 'assets/images/openbook.png', context, thiTheoDe()),
                       iTem('CÂU SAI', 'assets/images/close.png', context, cauSai()),
                       iTem('BIỂN BÁO', 'assets/images/bienbao.png', context, BienBao()),

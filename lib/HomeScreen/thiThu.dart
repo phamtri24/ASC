@@ -1,66 +1,111 @@
 import 'package:flutter/material.dart';
+import '../Model/Question.dart';
+import '../API/APIB1.dart'; // Đường dẫn tới hàm fetchQuiz
 
-void main() {
-  runApp(MaterialApp(
-    home: thiThu(),
-  ));
+class thiThuB1 extends StatefulWidget {
+  @override
+  _thiThuB1State createState() => _thiThuB1State();
 }
 
-class thiThu extends StatelessWidget {
-  const thiThu({super.key});
+class _thiThuB1State extends State<thiThuB1> {
+  late Future<List<Question>> futureQuiz;
+  Map<int, String?> selectedAnswers = {}; // Lưu câu trả lời đã chọn của người dùng
+
+  @override
+  void initState() {
+    super.initState();
+    futureQuiz = fetchQuizB1();
+  }
+
+  void submitQuiz() {
+    // Logic xử lý khi người dùng nộp bài
+    // Ở đây bạn có thể tính điểm hoặc hiển thị kết quả
+    print("Câu trả lời đã chọn: $selectedAnswers");
+    // Bạn có thể hiển thị một dialog hoặc chuyển sang màn hình khác để hiển thị kết quả
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        title: Center(
-          child: Text(
-            'THI THỬ',
-            style: TextStyle(
-              color: Colors.black,
-              fontFamily: 'Roboto-Bold',
-              fontSize: 22,
-            ),
-          ),
-        ),
+        title: Text('Trắc Nghiệm'),
       ),
-      backgroundColor: Colors.white,
-      body: Padding(
-          padding: EdgeInsets.all(20),
-          child: Column(
+      body: FutureBuilder<List<Question>>(
+        future: futureQuiz,
+        builder: (context, snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return Center(child: CircularProgressIndicator());
+          } else if (snapshot.hasError) {
+            return Center(child: Text('Lỗi: ${snapshot.error}'));
+          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+            return Center(child: Text('Không có câu hỏi nào.'));
+          }
+
+          List<Question> questions = snapshot.data!;
+
+          return Column(
             children: [
-              Container(
-                decoration: BoxDecoration(
-                  color: Color(0xFF2352AB),
-                  borderRadius: BorderRadius.circular(15),
+              Expanded(
+                child: ListView.builder(
+                  itemCount: questions.length,
+                  itemBuilder: (context, index) {
+                    return Card(
+                      margin: EdgeInsets.all(10),
+                      child: Padding(
+                        padding: EdgeInsets.all(10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            if (questions[index].imageUrl != null)
+                              Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: Image.network(
+                                  questions[index].imageUrl!,
+                                  fit: BoxFit.cover,
+                                  height: 200,
+                                  width: double.infinity,
+                                ),
+                              ),
+                            Text(
+                              '${index + 1}. ${questions[index].questionText}',
+                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: 10),
+                            ...questions[index].answers.map((answer) {
+                              return ListTile(
+                                title: Text(answer.answerText),
+                                leading: Radio<String?>(
+                                  value: answer.answerId,
+                                  groupValue: selectedAnswers[index],
+                                  onChanged: (value) {
+                                    setState(() {
+                                      selectedAnswers[index] = value;
+                                    });
+                                  },
+                                ),
+                              );
+                            }).toList(),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
                 ),
-                padding: EdgeInsets.all(20),
               ),
-              SizedBox(height: 30),
-              SizedBox(
-                width: 150,
-                height: 50,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
-                  onPressed: () {},
+                  onPressed: submitQuiz,
+                  child: Text('Nộp Bài'),
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF2352AB),
-                    padding: EdgeInsets.symmetric(vertical: 5),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                  ),
-                  child: Text(
-                    "NỘP BÀI",
-                    style: TextStyle(
-                        fontSize: 20,
-                        fontFamily: 'Roboto-Bold',
-                        color: Colors.white),
+                    minimumSize: Size(double.infinity, 50), // Chiều rộng đầy đủ
                   ),
                 ),
               ),
             ],
-          ),),
+          );
+        },
+      ),
     );
   }
 }

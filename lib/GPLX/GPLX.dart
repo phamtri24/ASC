@@ -69,7 +69,7 @@ class GPLX extends StatelessWidget {
           case 'B1':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const B1screen(title: "GPLX B1",)),
+              MaterialPageRoute(builder: (context) => const B1screen(title: "GPLX B1")),
             );
             break;
           case 'B2':

@@ -1,6 +1,6 @@
-import 'package:app/HomeScreen/bienBao.dart';
+import 'package:app/HomeScreenB1/bienBao.dart';
 import 'package:flutter/material.dart';
-import '../HomeScreen/CSKH.dart';
+import '../HomeScreenB1/CSKH.dart';
 import '../HomeScreenC/bienBao.dart';
 import '../HomeScreenC/cauLiet.dart';
 import '../HomeScreenC/cauSai.dart';

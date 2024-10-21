@@ -1,5 +1,6 @@
+import 'package:app/HomeScreenAll/CSKH_All.dart';
 import 'package:flutter/material.dart';
-
+import '../HomeScreenB2/CSKH.dart';
 void main() {
   runApp(const MaterialApp(
     home: CSKH(),
@@ -29,22 +30,11 @@ class CSKH extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xFF2352AB),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(20),
-                child: Text("Hỗ trợ kỹ thuật : support@ascvn.com.vn "
-                    "\nHotline hỗ trợ : (028) 66.797.357 "
-                    "\nYêu cầu chung: contact@ascvn.com.vn",
-                  style: TextStyle(color: Colors.white),)
-              ),
-            )
+          children: const [
+            CskhAll(),
           ],
-        ),),
+        ),
+      ),
     );
   }
 }

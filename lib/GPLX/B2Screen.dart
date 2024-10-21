@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../HomeScreen/CSKH.dart';
+import '../HomeScreenB1/CSKH.dart';
 import '../HomeScreenB2/bienBao.dart';
 import '../HomeScreenB2/cauLiet.dart';
 import '../HomeScreenB2/cauSai.dart';

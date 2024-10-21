@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'package:app/API/linkAPI.dart';
 import 'package:http/http.dart' as http;
 import '../Model/Question.dart';
 import '../Model/Answer.dart';
 
 Future<List<Question>> fetchQuizBienBao() async {
-  final response = await http.get(Uri.parse('https://2815-113-161-66-197.ngrok-free.app/QnACar2/api/v1/questions/category=6')); // Thay API URL vào đây
+  final response = await http.get(Uri.parse(ApiConstants.questions));
 
   if (response.statusCode == 200) {
     String utf8Body = utf8.decode(response.bodyBytes);

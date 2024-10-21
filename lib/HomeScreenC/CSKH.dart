@@ -1,3 +1,4 @@
+import 'package:app/HomeScreenAll/CSKH_All.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -29,19 +30,11 @@ class CSKH extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(20),
         child: Column(
-          children: [
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xFF2352AB),
-              ),
-              child: const Padding(
-                padding: EdgeInsets.all(12),
-                child: Text("Xin chào"),
-              ),
-            )
+          children: const [
+            CskhAll(),
           ],
-        ),),
+        ),
+      ),
     );
   }
 }

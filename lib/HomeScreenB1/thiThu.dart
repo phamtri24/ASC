@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../Model/Question.dart';
-import '../API/APIB1.dart'; // Đường dẫn tới hàm fetchQuiz
+import '../API/APIB1.dart';
 
 class thiThuB1 extends StatefulWidget {
   const thiThuB1({super.key});
@@ -20,10 +20,7 @@ class _thiThuB1State extends State<thiThuB1> {
   }
 
   void submitQuiz() {
-    // Logic xử lý khi người dùng nộp bài
-    // Ở đây bạn có thể tính điểm hoặc hiển thị kết quả
     print("Câu trả lời đã chọn: $selectedAnswers");
-    // Bạn có thể hiển thị một dialog hoặc chuyển sang màn hình khác để hiển thị kết quả
   }
 
   @override
@@ -99,7 +96,7 @@ class _thiThuB1State extends State<thiThuB1> {
                 child: ElevatedButton(
                   onPressed: submitQuiz,
                   style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50), // Chiều rộng đầy đủ
+                    minimumSize: const Size(double.infinity, 50),
                   ),
                   child: Text('Nộp Bài'),
                 ),

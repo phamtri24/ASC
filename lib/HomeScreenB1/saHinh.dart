@@ -1,29 +1,28 @@
+import 'package:app/API/APISahinh.dart';
 import 'package:flutter/material.dart';
 import '../Model/Answer.dart';
-import '../Model/Question.dart'; // Thay bằng đường dẫn thực tế tới model Question
-import '../API/APIBienBao.dart'; // Thay bằng file chứa API của bạn
-
-class BienBao extends StatefulWidget {
-  const BienBao({super.key});
+import '../Model/Question.dart';
+class saHinh extends StatefulWidget {
+  const saHinh({super.key});
 
   @override
-  _BienBaoState createState() => _BienBaoState();
+  _saHinhState createState() => _saHinhState();
 }
 
-class _BienBaoState extends State<BienBao> {
+class _saHinhState extends State<saHinh> {
   Future<List<Question>>? quizData;
 
   @override
   void initState() {
     super.initState();
-    quizData = fetchQuizBienBao(); // Gọi API lấy danh sách câu hỏi
+    quizData = fetchQuizSahinh(); // Gọi API lấy danh sách câu hỏi
   }
 
   @override
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Biển báo'),
+        title: const Text('Câu hỏi sa hình'),
       ),
       body: FutureBuilder<List<Question>>(
         future: quizData,

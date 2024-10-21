@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: meo(),
   ));
 }
@@ -14,7 +14,7 @@ class meo extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(
+        title: const Center(
           child: Text(
             'MẸO',
             style: TextStyle(
@@ -27,15 +27,15 @@ class meo extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: Padding(
-        padding: EdgeInsets.all(20),
+        padding: const EdgeInsets.all(20),
         child: Column(
           children: [
             Container(
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(20),
-                color: Color(0xFF2352AB),
+                color: const Color(0xFF2352AB),
               ),
-              child: Padding(
+              child: const Padding(
                 padding: EdgeInsets.all(12),
               ),
             )

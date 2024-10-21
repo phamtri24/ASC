@@ -20,7 +20,7 @@ class B1screen extends StatelessWidget {
         title: Center(
           child: Text(
             title,
-            style: TextStyle(fontFamily: 'Roboto-Bold'),
+            style: const TextStyle(fontFamily: 'Roboto-Bold'),
           ),
         ),
       ),
@@ -31,27 +31,27 @@ class B1screen extends StatelessWidget {
           children: [
             Container(
               decoration: BoxDecoration(
-                color: Color(0xFF2352AB),
+                color: const Color(0xFF2352AB),
                 borderRadius: BorderRadius.circular(15),
               ),
-              padding: EdgeInsets.all(20),
+              padding: const EdgeInsets.all(20),
               child: Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       iTem('THI THỬ', 'assets/images/exam.png', context, thiThuB1()),
-                      iTem('THI THEO ĐỀ', 'assets/images/openbook.png', context, thiTheoDe()),
-                      iTem('CÂU SAI', 'assets/images/close.png', context, cauSai()),
+                      iTem('THI THEO ĐỀ', 'assets/images/openbook.png', context, const thiTheoDe()),
+                      iTem('CÂU SAI', 'assets/images/close.png', context, const cauSai()),
                       iTem('BIỂN BÁO', 'assets/images/bienbao.png', context, BienBao()),
                     ],
                   ),
-                  SizedBox(height: 10),
+                  const SizedBox(height: 10),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
                       iTem('LÝ THUYẾT', 'assets/images/book.png', context, LyThuyet()),
-                      iTem('MẸO', 'assets/images/idea.png', context, meo()),
+                      iTem('MẸO', 'assets/images/idea.png', context, const meo()),
                       iTem('CÂU LIỆT', 'assets/images/erro.png', context, CauLiet()),
                       iTem('SA HÌNH', 'assets/images/shapes.png', context, saHinh()),
                     ],
@@ -60,23 +60,23 @@ class B1screen extends StatelessWidget {
                 ],
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             SizedBox(
               width: 500,
               height: 60,
               child: ElevatedButton(
                 onPressed: () {
                   Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => CSKH()));
+                      MaterialPageRoute(builder: (context) => const CSKH()));
                 },
                 style: ElevatedButton.styleFrom(
-                  backgroundColor: Color(0xFF2352AB),
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  backgroundColor: const Color(0xFF2352AB),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   "CHĂM SÓC KHÁCH HÀNG",
                   style: TextStyle(
                       fontSize: 22,
@@ -103,21 +103,21 @@ class B1screen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 shape: BoxShape.circle,
                 color: Colors.white,
               ),
-              padding: EdgeInsets.all(15),
+              padding: const EdgeInsets.all(15),
               child: Image.asset(
                 iconPath,
                 width: 40,
                 height: 40,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               label,
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 14,
                 color: Colors.white,
                 fontFamily: 'Roboto-Bold',

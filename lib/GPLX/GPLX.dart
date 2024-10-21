@@ -5,14 +5,14 @@ import '../GPLX/CScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     debugShowCheckedModeBanner: false,
     home: GPLX(),
   ));
 }
 
 class GPLX extends StatelessWidget {
-  const GPLX({Key? key}) : super(key: key);
+  const GPLX({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class GPLX extends StatelessWidget {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         backgroundColor: Colors.white,
-        title: Center(
+        title: const Center(
           child: Text(
             'Chọn loại GPLX',
             style: TextStyle(
@@ -57,11 +57,11 @@ class GPLX extends StatelessWidget {
   Widget _buildButton(BuildContext context, String text) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        backgroundColor: Color(0xFF2352AB),
+        backgroundColor: const Color(0xFF2352AB),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(10),
         ),
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         elevation: 5,
       ),
       onPressed: () {
@@ -69,26 +69,26 @@ class GPLX extends StatelessWidget {
           case 'B1':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => B1screen(title: "GPLX B1",)),
+              MaterialPageRoute(builder: (context) => const B1screen(title: "GPLX B1",)),
             );
             break;
           case 'B2':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => B2screen(title: "GPLX B2")),
+              MaterialPageRoute(builder: (context) => const B2screen(title: "GPLX B2")),
             );
             break;
           case 'C':
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Cscreen(title: "GPLX C")),
+              MaterialPageRoute(builder: (context) => const Cscreen(title: "GPLX C")),
             );
             break;
         }
       },
       child: Text(
         text,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 30,
           color: Colors.white,
         ),

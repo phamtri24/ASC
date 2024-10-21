@@ -4,6 +4,8 @@ import '../Model/Question.dart'; // Thay bằng đường dẫn thực tế tớ
 import '../API/APICauLiet.dart'; // Thay bằng file chứa API của bạn
 
 class CauLiet extends StatefulWidget {
+  const CauLiet({super.key});
+
   @override
   _CauLietState createState() => _CauLietState();
 }
@@ -21,13 +23,13 @@ class _CauLietState extends State<CauLiet> {
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Câu liệt'),
+        title: const Text('Câu liệt'),
       ),
       body: FutureBuilder<List<Question>>(
         future: quizData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
@@ -44,7 +46,7 @@ class _CauLietState extends State<CauLiet> {
                       // Hiển thị câu hỏi với số thứ tự
                       Text(
                         '${questionIndex + 1}. ${question.questionText}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -61,7 +63,7 @@ class _CauLietState extends State<CauLiet> {
                               child: Image.network(
                                 question.imageUrl!,
                                 errorBuilder: (context, error, stackTrace) {
-                                  return Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
+                                  return const Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
                                 },
                                 width: MediaQuery.of(context).size.width, // Full chiều ngang màn hình
                                 height: 200, // Chiều cao của ảnh, bạn có thể tùy chỉnh
@@ -83,7 +85,7 @@ class _CauLietState extends State<CauLiet> {
                           return ListTile(
                             leading: Text(
                               '$answerLabel)', // Hiển thị a, b, c, ...
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             title: Text(
                               answer.answerText,
@@ -95,14 +97,14 @@ class _CauLietState extends State<CauLiet> {
                           );
                         }),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 );
               },
             );
           } else {
-            return Center(child: Text('No data available'));
+            return const Center(child: Text('No data available'));
           }
         },
       ),

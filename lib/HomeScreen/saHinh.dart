@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import '../Model/Answer.dart';
 import '../Model/Question.dart'; // Thay bằng đường dẫn thực tế tới model Question
 class saHinh extends StatefulWidget {
+  const saHinh({super.key});
+
   @override
   _saHinhState createState() => _saHinhState();
 }
@@ -20,13 +22,13 @@ class _saHinhState extends State<saHinh> {
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Câu hỏi sa hình'),
+        title: const Text('Câu hỏi sa hình'),
       ),
       body: FutureBuilder<List<Question>>(
         future: quizData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
@@ -43,7 +45,7 @@ class _saHinhState extends State<saHinh> {
                       // Hiển thị câu hỏi với số thứ tự
                       Text(
                         '${questionIndex + 1}. ${question.questionText}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -60,7 +62,7 @@ class _saHinhState extends State<saHinh> {
                               child: Image.network(
                                 question.imageUrl!,
                                 errorBuilder: (context, error, stackTrace) {
-                                  return Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
+                                  return const Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
                                 },
                                 width: MediaQuery.of(context).size.width, // Full chiều ngang màn hình
                                 height: 200, // Chiều cao của ảnh, bạn có thể tùy chỉnh
@@ -82,7 +84,7 @@ class _saHinhState extends State<saHinh> {
                           return ListTile(
                             leading: Text(
                               '$answerLabel)', // Hiển thị a, b, c, ...
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             title: Text(
                               answer.answerText,
@@ -94,14 +96,14 @@ class _saHinhState extends State<saHinh> {
                           );
                         }),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 );
               },
             );
           } else {
-            return Center(child: Text('No data available'));
+            return const Center(child: Text('No data available'));
           }
         },
       ),

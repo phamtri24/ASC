@@ -1,10 +1,11 @@
 import 'dart:convert';
+import 'package:app/API/linkAPI.dart';
 import 'package:http/http.dart' as http;
 import '../Model/Question.dart'; // Mô hình câu hỏi
 import '../Model/Answer.dart'; // Mô hình câu trả lời
 
 Future<List<Question>> fetchQuizSahinh() async {
-  final response = await http.get(Uri.parse('https://7741-113-161-66-197.ngrok-free.app/mavenproject1/api/v1/questions/category=7')); // Thay API URL vào đây
+  final response = await http.get(Uri.parse(ApiConstants.questions));
 
   if (response.statusCode == 200) {
     // Đảm bảo nội dung trả về được giải mã theo chuẩn UTF-8

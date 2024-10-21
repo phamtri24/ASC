@@ -8,7 +8,7 @@ class SignUp extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.blue,
-        title: Text('Sign Up',
+        title: const Text('Sign Up',
           style: TextStyle(color: Colors.white),
         ),
       ),
@@ -21,7 +21,7 @@ class SignUp extends StatelessWidget {
               Container(
                 width: 120,
                 height: 90,
-                padding: EdgeInsets.all(10),
+                padding: const EdgeInsets.all(10),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(10),
@@ -30,7 +30,7 @@ class SignUp extends StatelessWidget {
                       color: Colors.black.withOpacity(0.2),
                       spreadRadius: 3,
                       blurRadius: 5,
-                      offset: Offset(0, 2),
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),
@@ -38,7 +38,7 @@ class SignUp extends StatelessWidget {
                   'assets/images/asclg.jpg',
                 ),
               ),
-              SizedBox(height: 150),
+              const SizedBox(height: 150),
 
             ],
           )

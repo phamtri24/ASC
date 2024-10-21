@@ -1,9 +1,12 @@
+
 import 'package:flutter/material.dart';
 import '../Model/Answer.dart';
 import '../Model/Question.dart'; // Thay bằng đường dẫn thực tế tới model Question
 import '../API/APIAll.dart'; // Thay bằng file chứa API của bạn
 
 class LyThuyet extends StatefulWidget {
+  const LyThuyet({super.key});
+
   @override
   _LyThuyetState createState() => _LyThuyetState();
 }
@@ -21,13 +24,13 @@ class _LyThuyetState extends State<LyThuyet> {
    Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Tất cả câu hỏi'),
+        title: const Text('Tất cả câu hỏi'),
       ),
       body: FutureBuilder<List<Question>>(
         future: quizData,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Error: ${snapshot.error}'));
           } else if (snapshot.hasData) {
@@ -44,7 +47,7 @@ class _LyThuyetState extends State<LyThuyet> {
                       // Hiển thị câu hỏi với số thứ tự
                       Text(
                         '${questionIndex + 1}. ${question.questionText}',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
                         ),
@@ -61,7 +64,7 @@ class _LyThuyetState extends State<LyThuyet> {
                               child: Image.network(
                                 question.imageUrl!,
                                 errorBuilder: (context, error, stackTrace) {
-                                  return Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
+                                  return const Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
                                 },
                                 width: MediaQuery.of(context).size.width, // Full chiều ngang màn hình
                                 height: 200, // Chiều cao của ảnh, bạn có thể tùy chỉnh
@@ -83,7 +86,7 @@ class _LyThuyetState extends State<LyThuyet> {
                           return ListTile(
                             leading: Text(
                               '$answerLabel)', // Hiển thị a, b, c, ...
-                              style: TextStyle(fontSize: 16),
+                              style: const TextStyle(fontSize: 16),
                             ),
                             title: Text(
                               answer.answerText,
@@ -95,14 +98,14 @@ class _LyThuyetState extends State<LyThuyet> {
                           );
                         }),
                       ),
-                      SizedBox(height: 20),
+                      const SizedBox(height: 20),
                     ],
                   ),
                 );
               },
             );
           } else {
-            return Center(child: Text('No data available'));
+            return const Center(child: Text('No data available'));
           }
         },
       ),

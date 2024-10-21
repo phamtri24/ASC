@@ -3,6 +3,8 @@ import '../Model/Question.dart';
 import '../API/APIB1.dart'; // Đường dẫn tới hàm fetchQuiz
 
 class thiThuB1 extends StatefulWidget {
+  const thiThuB1({super.key});
+
   @override
   _thiThuB1State createState() => _thiThuB1State();
 }
@@ -28,17 +30,17 @@ class _thiThuB1State extends State<thiThuB1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Trắc Nghiệm'),
+        title: const Text('Trắc Nghiệm'),
       ),
       body: FutureBuilder<List<Question>>(
         future: futureQuiz,
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
             return Center(child: Text('Lỗi: ${snapshot.error}'));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text('Không có câu hỏi nào.'));
+            return const Center(child: Text('Không có câu hỏi nào.'));
           }
 
           List<Question> questions = snapshot.data!;
@@ -50,9 +52,9 @@ class _thiThuB1State extends State<thiThuB1> {
                   itemCount: questions.length,
                   itemBuilder: (context, index) {
                     return Card(
-                      margin: EdgeInsets.all(10),
+                      margin: const EdgeInsets.all(10),
                       child: Padding(
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -68,9 +70,9 @@ class _thiThuB1State extends State<thiThuB1> {
                               ),
                             Text(
                               '${index + 1}. ${questions[index].questionText}',
-                              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 10),
+                            const SizedBox(height: 10),
                             ...questions[index].answers.map((answer) {
                               return ListTile(
                                 title: Text(answer.answerText),
@@ -84,7 +86,7 @@ class _thiThuB1State extends State<thiThuB1> {
                                   },
                                 ),
                               );
-                            }).toList(),
+                            }),
                           ],
                         ),
                       ),
@@ -96,10 +98,10 @@ class _thiThuB1State extends State<thiThuB1> {
                 padding: const EdgeInsets.all(16.0),
                 child: ElevatedButton(
                   onPressed: submitQuiz,
-                  child: Text('Nộp Bài'),
                   style: ElevatedButton.styleFrom(
-                    minimumSize: Size(double.infinity, 50), // Chiều rộng đầy đủ
+                    minimumSize: const Size(double.infinity, 50), // Chiều rộng đầy đủ
                   ),
+                  child: Text('Nộp Bài'),
                 ),
               ),
             ],

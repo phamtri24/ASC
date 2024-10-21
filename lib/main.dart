@@ -6,19 +6,20 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({Key? key}) : super(key: key);
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return const MaterialApp(
+      debugShowCheckedModeBanner
+      : false,
       home: SplashScreen(),
     );
   }
 }
 
 class SplashScreen extends StatefulWidget {
-  const SplashScreen({Key? key}) : super(key: key);
+  const SplashScreen({super.key});
 
   @override
   _SplashScreenState createState() => _SplashScreenState();
@@ -28,9 +29,9 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(Duration(seconds: 2), () {
+    Future.delayed(const Duration(seconds: 2), () {
       Navigator.push(context,
-          MaterialPageRoute(builder: (context) => GPLX()));
+          MaterialPageRoute(builder: (context) => const GPLX()));
     });
   }
 
@@ -55,13 +56,13 @@ class _SplashScreenState extends State<SplashScreen> {
                       color: Colors.black.withOpacity(0.2),
                       spreadRadius: 3,
                       blurRadius: 5,
-                      offset: Offset(0, 2),
+                      offset: const Offset(0, 2),
                     ),
                   ],
                 ),
                 child: Image.asset('assets/images/1024.png'),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
             ],
           ),
         ),

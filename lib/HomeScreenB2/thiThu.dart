@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MaterialApp(
+  runApp(const MaterialApp(
     home: thiThu(),
   ));
 }
@@ -14,7 +14,7 @@ class thiThu extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.white,
-        title: Center(
+        title: const Center(
           child: Text(
             'THI THỬ',
             style: TextStyle(
@@ -27,30 +27,30 @@ class thiThu extends StatelessWidget {
       ),
       backgroundColor: Colors.white,
       body: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: Column(
             children: [
               Container(
                 decoration: BoxDecoration(
-                  color: Color(0xFF2352AB),
+                  color: const Color(0xFF2352AB),
                   borderRadius: BorderRadius.circular(15),
                 ),
-                padding: EdgeInsets.all(20),
+                padding: const EdgeInsets.all(20),
               ),
-              SizedBox(height: 30),
+              const SizedBox(height: 30),
               SizedBox(
                 width: 150,
                 height: 50,
                 child: ElevatedButton(
                   onPressed: () {},
                   style: ElevatedButton.styleFrom(
-                    backgroundColor: Color(0xFF2352AB),
-                    padding: EdgeInsets.symmetric(vertical: 5),
+                    backgroundColor: const Color(0xFF2352AB),
+                    padding: const EdgeInsets.symmetric(vertical: 5),
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     "NỘP BÀI B2",
                     style: TextStyle(
                         fontSize: 20,

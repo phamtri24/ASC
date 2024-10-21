@@ -1,8 +1,8 @@
 
 import 'package:flutter/material.dart';
 import '../Model/Answer.dart';
-import '../Model/Question.dart'; // Thay bằng đường dẫn thực tế tới model Question
-import '../API/APIAll.dart'; // Thay bằng file chứa API của bạn
+import '../Model/Question.dart'; 
+import '../API/APIAll.dart'; 
 
 class LyThuyet extends StatefulWidget {
   const LyThuyet({super.key});
@@ -17,7 +17,7 @@ class _LyThuyetState extends State<LyThuyet> {
   @override
   void initState() {
     super.initState();
-    quizData = fetchQuizLyThuyet(); // Gọi API lấy danh sách câu hỏi
+    quizData = fetchQuizLyThuyet(); 
   }
 
   @override
@@ -44,7 +44,6 @@ class _LyThuyetState extends State<LyThuyet> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      // Hiển thị câu hỏi với số thứ tự
                       Text(
                         '${questionIndex + 1}. ${question.questionText}',
                         style: const TextStyle(
@@ -53,46 +52,43 @@ class _LyThuyetState extends State<LyThuyet> {
                         ),
                       ),
                       
-                      // Kiểm tra nếu có hình ảnh
                       if (question.imageUrl != null && question.imageUrl!.isNotEmpty)
                         Padding(
                           padding: const EdgeInsets.only(top: 10, bottom: 10),
                           child: ClipRect(
                             child: Align(
-                              alignment: Alignment.topCenter, // Căn ảnh từ trên xuống
-                              heightFactor: 0.6, // Giữ 80% chiều cao của ảnh, cắt 20% phía dưới
+                              alignment: Alignment.topCenter, 
+                              heightFactor: 0.6,
                               child: Image.network(
                                 question.imageUrl!,
                                 errorBuilder: (context, error, stackTrace) {
-                                  return const Text('Unable to load image'); // Thông báo lỗi nếu không load được ảnh
+                                  return const Text('Unable to load image');
                                 },
-                                width: MediaQuery.of(context).size.width, // Full chiều ngang màn hình
-                                height: 200, // Chiều cao của ảnh, bạn có thể tùy chỉnh
-                                fit: BoxFit.cover, // Đảm bảo ảnh bao phủ toàn bộ chiều ngang
+                                width: MediaQuery.of(context).size.width,
+                                height: 200, 
+                                fit: BoxFit.cover, 
                               ),
                             ),
                           ),
                         ),
                       
-                      // Hiển thị danh sách câu trả lời với các ký tự a,b,c,...
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: List.generate(question.answers.length, (answerIndex) {
                           Answer answer = question.answers[answerIndex];
                           
-                          // Convert index to 'a', 'b', 'c', ...
-                          String answerLabel = String.fromCharCode(97 + answerIndex); // 'a' -> 97
+                          String answerLabel = String.fromCharCode(97 + answerIndex); 
 
                           return ListTile(
                             leading: Text(
-                              '$answerLabel)', // Hiển thị a, b, c, ...
+                              '$answerLabel)', 
                               style: const TextStyle(fontSize: 16),
                             ),
                             title: Text(
                               answer.answerText,
                               style: TextStyle(
                                 fontSize: 16,
-                                color: answer.correct ? Colors.red : Colors.black, // Đáp án đúng tô màu đỏ
+                                color: answer.correct ? Colors.red : Colors.black,
                               ),
                             ),
                           );
